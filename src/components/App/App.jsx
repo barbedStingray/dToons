@@ -4,7 +4,7 @@ function App () {
   
   return (
     <div>
-      <h1>TO DO APP</h1>
+      <h1>Welcome to dToons!</h1>
     </div>
   );
 
