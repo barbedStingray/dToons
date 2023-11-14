@@ -18,10 +18,60 @@ router.get('/', (req, res) => {
     });
 });
 
+
+
+
+
+
+
 // POST
+
+router.post('/', (req, res) => {
+    console.log(`/dtoons add new character`, req.body);
+
+    let queryText = `
+    INSERT INTO "dtoons" ("cardname", "character", "color", "number", "image", "abilityone", "abilitytwo")
+    VALUES ($1, $2, $3, $4, $5, $6, $7);
+    `;
+
+    pool.query(queryText, [
+            req.body.cardname, 
+            req.body.character,
+            req.body.color,
+            req.body.number,
+            req.body.image,
+            req.body.abilityone,
+            req.body.abilitytwo
+
+        ]).then((result) => {
+            console.log(`/dtoons POST success`);
+            res.sendStatus(201);
+    }).catch((error) => {
+        console.log(`/dtoons POST error`);
+        res.sendStatus(500);
+    });
+});
 
 // PUT
 
+
+
+
 // DELETE
+
+router.delete('/:id', (req, res) => {
+    console.log(`DELETE /dtoons`, req.params);
+
+    let queryText = `DELETE FROM "dtoons" WHERE "id" = $1;`;
+
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            console.log(`DELETE /dtoons success`);
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log(`DELETE /dtoons Error`);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

@@ -1,15 +1,17 @@
 
+import DtoonCard from '../DtoonCard/DtoonCard.jsx';
+
 function DtoonDisplay(props) {
 
     return (
         <div id="dtoon-display">
             {
                 props.dtoonList.map((dtoon) => 
-                <>
-                    <p>{dtoon.character}</p>
-                    <p>{dtoon.number}</p>
-                    <p>{dtoon.color}</p>
-                </>)
+                    (<DtoonCard 
+                        key={dtoon.id}
+                        dtoon={dtoon}
+                        getDtoonList={props.getDtoonList}
+                    />))
             }
 
         </div>

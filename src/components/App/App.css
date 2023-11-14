@@ -1,23 +1,101 @@
-.App {
-  text-align: center;
+
+#web-page {
+  color: grey;
+  background-color: #232323;
+  border: #232323 2px solid;
 }
 
-.App-header {
-  background-color: #222;
-  height: 70px;
-  padding: 20px;
-  color: white;
+#dtoon-display {
+  /* border: 2px solid blue; */
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2%;
+  justify-content: center;
+
 }
 
-.App-title {
-  font-size: 1.5em;
-}
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#dtoon-card {
+  /* border: 2px solid black; */
+  margin: 1% 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
 }
+      #card-img {
+        width: 200px;
+        height: auto;
+        border-radius: 150%;
+        /* border: blue solid 2px; */
+        /* Crop Images to 450px Square  */
+      }
+      #dtoon-number {
+        /* border: 2px solid yellow; */
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        margin: 0% 0% -20% 0%;
+        position: relative;
+        bottom: 30%;
+        right: 25%;
+
+      }
+      /* dToon Colors */
+      .blue {
+        border: 5px solid blue;
+        background-color: skyblue;
+        color: black;
+      }
+      .red {
+        border: 5px solid red;
+        background-color: lightcoral;
+        color: black;
+      }
+      .yellow {
+        border: 5px solid yellow;
+        background-color: lightyellow;
+        color: black;
+      }
+      .green {
+        border: 5px solid green;
+        background-color: lightgreen;
+        color: black;
+      }
+      .purple {
+        border: 5px solid purple;
+        background-color: #c9a6c9;
+        color: black;
+      }
+      .orange {
+        border: 5px solid orange;
+        background-color: #e7c584;
+        color: black;
+      }
+      .silver {
+        border: 5px solid grey;
+        background-color: lightgrey;
+        color: black;
+      }
+      .black {
+        border: 5px solid black;
+        background-color: lightgrey;
+        color: black;
+      }
+      .white {
+        border: 5px solid whitesmoke;
+        background-color: lightgrey;
+        color: black;
+      }
+      .pink {
+        border: 5px solid pink;
+        background-color: #f6dade;
+        color: black;
+      }
