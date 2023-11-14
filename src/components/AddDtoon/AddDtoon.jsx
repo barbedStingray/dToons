@@ -6,6 +6,8 @@ import axios from 'axios';
 
 import CardNameInput from './CardNameInput/CardNameInput';
 import CharacterNameInput from './CharacterNameInput/CharacterNameInput';
+import CardType from './CardType/CardType';
+import CardKind from './CardKind/CardKind';
 
 
 import './AddDtoon.css';
@@ -23,6 +25,9 @@ function AddDtoon(props) {
     const [cardImage, setCardImage] = useState('');
     const [abilityOne, setAbilityOne] = useState('');
     const [abilityTwo, setAbilityTwo] = useState('');
+    const [cardType, setCardType] = useState('');
+    const [cardKind, setCardKind] = useState('');
+
 
 
     // POST request /dtoons
@@ -37,7 +42,9 @@ function AddDtoon(props) {
             number: number,
             image: cardImage,
             abilityone: abilityOne,
-            abilitytwo: abilityTwo
+            abilitytwo: abilityTwo,
+            type: cardType,
+            kind: cardKind
 
         }).then((response) => {
 
@@ -73,7 +80,6 @@ function AddDtoon(props) {
 
                 <br />
 
-                {/* Character color  */}
                 <input
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
@@ -84,7 +90,6 @@ function AddDtoon(props) {
 
                 <br />
 
-                {/* Character number  */}
                 <input
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
@@ -95,7 +100,6 @@ function AddDtoon(props) {
 
                 <br />
 
-                {/* Character image  */}
                 <input
                     value={cardImage}
                     onChange={(e) => setCardImage(e.target.value)}
@@ -106,7 +110,6 @@ function AddDtoon(props) {
 
                 <br />
 
-                {/* Character image  */}
                 <textarea
                     value={abilityOne}
                     onChange={(e) => setAbilityOne(e.target.value)}
@@ -117,7 +120,6 @@ function AddDtoon(props) {
 
                 <br />
 
-                {/* Character image  */}
                 <textarea
                     value={abilityTwo}
                     onChange={(e) => setAbilityTwo(e.target.value)}
@@ -126,7 +128,19 @@ function AddDtoon(props) {
                 </textarea>
                 {abilityTwo}
 
-                <br />
+                <CardType 
+                    cardType={cardType}
+                    setCardType={setCardType}
+                />
+
+                <CardKind
+                    cardKind={cardKind}
+                    setCardKind={setCardKind}
+                    cardType={cardType}
+                    setCardType={setCardType}
+
+                />
+
 
                 <button>Create dToon</button>
             </form>

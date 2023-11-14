@@ -5,12 +5,12 @@ function CardNameInput(props) {
 
     return (
         <div id="input-div">
-            <input
+            <label>Name of the Card: <input
                     value={props.cardName}
                     onChange={(e) => props.setCardName(e.target.value)}
                     type="text"
                     placeholder="card name">
-                </input>
+                </input></label>
                 {props.cardName}
         </div>
     )
