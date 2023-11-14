@@ -4,6 +4,10 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
+import CardNameInput from './CardNameInput/CardNameInput';
+import CharacterNameInput from './CharacterNameInput/CharacterNameInput';
+
+
 import './AddDtoon.css';
 
 
@@ -21,21 +25,21 @@ function AddDtoon(props) {
     const [abilityTwo, setAbilityTwo] = useState('');
 
 
-// POST request /dtoons
+    // POST request /dtoons
     const sendNewDtoon = (e) => {
         e.preventDefault();
         console.log(`creating your dToon...`);
 
         axios.post('/dtoons', {
-                cardname: cardName,
-                character: characterName,
-                color: color,
-                number: number,
-                image: cardImage,
-                abilityone: abilityOne,
-                abilitytwo: abilityTwo
-            
-            }).then((response) => {
+            cardname: cardName,
+            character: characterName,
+            color: color,
+            number: number,
+            image: cardImage,
+            abilityone: abilityOne,
+            abilitytwo: abilityTwo
+
+        }).then((response) => {
 
             // clear your inputs
 
@@ -59,30 +63,18 @@ function AddDtoon(props) {
         <div id="add-dtoon">
             <form onSubmit={sendNewDtoon}>
 
-        {/* Card Name  */}
+                <CardNameInput
+                    cardName={cardName}
+                    setCardName={setCardName} />
+
+                <CharacterNameInput
+                    characterName={characterName}
+                    setCharacterName={setCharacterName} />
+
+                <br />
+
+                {/* Character color  */}
                 <input
-                    value={cardName}
-                    onChange={(e) => setCardName(e.target.value)}
-                    type="text"
-                    placeholder="card name">
-                </input>
-                {cardName}
-
-                <br />
-                
-        {/* Character Name  */}
-                <input 
-                    value={characterName}
-                    onChange={(e) => setCharacterName(e.target.value)}
-                    type="text"
-                    placeholder="character">
-                </input>
-                {characterName}
-
-                <br />
-                
-        {/* Character color  */}
-                <input 
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
                     type="text"
@@ -91,9 +83,9 @@ function AddDtoon(props) {
                 {color}
 
                 <br />
-                
-        {/* Character number  */}
-                <input 
+
+                {/* Character number  */}
+                <input
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
                     type="number"
@@ -102,9 +94,9 @@ function AddDtoon(props) {
                 {number}
 
                 <br />
-                
-        {/* Character image  */}
-                <input 
+
+                {/* Character image  */}
+                <input
                     value={cardImage}
                     onChange={(e) => setCardImage(e.target.value)}
                     type="text"
@@ -113,9 +105,9 @@ function AddDtoon(props) {
                 {cardImage}
 
                 <br />
-                
-        {/* Character image  */}
-                <textarea 
+
+                {/* Character image  */}
+                <textarea
                     value={abilityOne}
                     onChange={(e) => setAbilityOne(e.target.value)}
                     type="text"
@@ -124,9 +116,9 @@ function AddDtoon(props) {
                 {abilityOne}
 
                 <br />
-                
-        {/* Character image  */}
-                <textarea 
+
+                {/* Character image  */}
+                <textarea
                     value={abilityTwo}
                     onChange={(e) => setAbilityTwo(e.target.value)}
                     type="text"
