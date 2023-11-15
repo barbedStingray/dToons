@@ -1,6 +1,6 @@
 
 
-function CharacterNameInput(props) {
+function CardChar(props) {
 
     return (
         <div id="input-div">
@@ -15,4 +15,4 @@ function CharacterNameInput(props) {
         </div>
     )
 }
-export default CharacterNameInput;
+export default CardChar;

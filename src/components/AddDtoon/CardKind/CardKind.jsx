@@ -1,30 +1,51 @@
 
+import { useState } from 'react';
+
 function CardKind(props) {
 
+    // Kind based on Type (Person, Animal, Legend, Object, Place)
+    const personArray = ['human', 'king', 'princess'];
+    const animalArray = ['bug', 'elephant', 'dog'];
+    const legendArray = ['geenie', 'dragon', 'alien'];
+    const objectArray = ['toy', 'vehicle', 'item'];
+    const placeArray = ['town', 'castle', 'event'];
 
-    // if (props.cardType === 'person') {
-    //     <> <option value="king">King</option>
-    //         <option value="queen">Queen</option>
-    //         <option value="princess">Princess</option> </>
-    // }
-    // else if (props.cardType === 'animal') {
-    //     <> <option value="bug">Bug</option>
-    //         <option value="bird">Bird</option>
-    //         <option value="dinosaur">Dinosaur</option> </>
-    // }
-    // else {
-    //     <option value="none">please select...</option>
-    // }
 
+    const [kindArray, setKindArray] = useState('');
+
+    const [checked, setChecked] = useState(false);
+
+    const handleClick = () => {
+        console.log(`checked before:`, checked)
+        setChecked(!checked);
+        console.log(`checked after:`, checked);
+    };
 
     return (
         <div id="card-kind">
-            <input
-                value={props.cardKind}
-                onChange={(e) => props.setCardKind(e.target.value)}
-                type="checkbox" >
-            </input>
-            {props.cardKind}
+            <label>Queen
+                <input
+                    type='checkbox'
+                    value='queen'
+                    onChange={handleClick}
+                    checked={checked}
+                    // onChange={(e) => setKindArray(e.target.value)}
+                >
+                </input>
+            </label>
+
+            <label>King
+                <input
+                    type='checkbox'
+                    value='king'
+                    onChange={(e) => setKindArray(e.target.value)}
+                >
+                </input>
+            </label>
+
+            {kindArray}
+
+
 
         </div>
     )

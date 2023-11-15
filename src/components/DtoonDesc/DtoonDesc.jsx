@@ -25,6 +25,8 @@ function DtoonDesc() {
             <p>Abilitytwo: {description.abilitytwo}</p>
             <p>card Type: {description.type}</p>
             <p>card Kind: {description.kind}</p>
+            <p>card Gender: {description.gender}</p>
+            <p>card Gender: {description.role}</p>
 
         </div>
     )

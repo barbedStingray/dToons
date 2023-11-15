@@ -30,8 +30,8 @@ router.post('/', (req, res) => {
     console.log(`/dtoons add new character`, req.body);
 
     let queryText = `
-    INSERT INTO "dtoons" ("cardname", "character", "color", "number", "image", "abilityone", "abilitytwo", "type", "kind")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    INSERT INTO "dtoons" ("cardname", "character", "color", "number", "image", "abilityone", "abilitytwo", "type", "kind", "gender", "role")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
     `;
 
     pool.query(queryText, [
@@ -43,7 +43,9 @@ router.post('/', (req, res) => {
             req.body.abilityone,
             req.body.abilitytwo,
             req.body.type,
-            req.body.kind
+            req.body.kind,
+            req.body.gender,
+            req.body.role
 
         ]).then((result) => {
             console.log(`/dtoons POST success`);

@@ -5,7 +5,7 @@ function CardNameInput(props) {
 
     return (
         <div id="input-div">
-            <label>Name of the Card: <input
+            <label><input
                     value={props.cardName}
                     onChange={(e) => props.setCardName(e.target.value)}
                     type="text"

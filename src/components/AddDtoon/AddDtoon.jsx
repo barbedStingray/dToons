@@ -4,10 +4,17 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-import CardNameInput from './CardNameInput/CardNameInput';
-import CharacterNameInput from './CharacterNameInput/CharacterNameInput';
+import CardNameInput from './CardName/CardName.jsx';
+import CardChar from './CardChar/CardChar.jsx';
+import CardImage from './CardImage/CardImage.jsx';
+import CardColor from './CardColor/CardColor.jsx';
+import CardNumber from './CardNumber/CardNumber.jsx';
+import AbilityOne from './AbilityOne/AbilityOne.jsx';
+import AbilityTwo from './AbilityTwo/AbilityTwo.jsx';
 import CardType from './CardType/CardType';
 import CardKind from './CardKind/CardKind';
+import CardGender from './CardGender/CardGender';
+import CardRole from './CardRole/CardRole.jsx';
 
 
 import './AddDtoon.css';
@@ -27,6 +34,8 @@ function AddDtoon(props) {
     const [abilityTwo, setAbilityTwo] = useState('');
     const [cardType, setCardType] = useState('');
     const [cardKind, setCardKind] = useState('');
+    const [cardGender, setCardGender] = useState('');
+    const [cardRole, setCardRole] = useState('');
 
 
 
@@ -44,7 +53,9 @@ function AddDtoon(props) {
             abilityone: abilityOne,
             abilitytwo: abilityTwo,
             type: cardType,
-            kind: cardKind
+            kind: cardKind,
+            gender: cardGender,
+            role: cardRole
 
         }).then((response) => {
 
@@ -74,59 +85,34 @@ function AddDtoon(props) {
                     cardName={cardName}
                     setCardName={setCardName} />
 
-                <CharacterNameInput
+                <CardChar
                     characterName={characterName}
                     setCharacterName={setCharacterName} />
 
-                <br />
+                <CardColor
+                    color={color}
+                    setColor={setColor}
+                />
 
-                <input
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                    type="text"
-                    placeholder="color">
-                </input>
-                {color}
+                <CardNumber
+                    number={number}
+                    setNumber={setNumber}
+                />
 
-                <br />
+                <CardImage 
+                    cardImage={cardImage}
+                    setCardImage={setCardImage}
+                />
 
-                <input
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                    type="number"
-                    placeholder="number">
-                </input>
-                {number}
+                <AbilityOne 
+                    abilityOne={abilityOne}
+                    setAbilityOne={setAbilityOne}
+                />
 
-                <br />
-
-                <input
-                    value={cardImage}
-                    onChange={(e) => setCardImage(e.target.value)}
-                    type="text"
-                    placeholder="cardPics/Movie/picture.png">
-                </input>
-                {cardImage}
-
-                <br />
-
-                <textarea
-                    value={abilityOne}
-                    onChange={(e) => setAbilityOne(e.target.value)}
-                    type="text"
-                    placeholder="Ability One Here...">
-                </textarea>
-                {abilityOne}
-
-                <br />
-
-                <textarea
-                    value={abilityTwo}
-                    onChange={(e) => setAbilityTwo(e.target.value)}
-                    type="text"
-                    placeholder="Ability Two Here...">
-                </textarea>
-                {abilityTwo}
+                <AbilityTwo
+                    abilityTwo={abilityTwo}
+                    setAbilityTwo={setAbilityTwo}
+                />
 
                 <CardType 
                     cardType={cardType}
@@ -138,7 +124,16 @@ function AddDtoon(props) {
                     setCardKind={setCardKind}
                     cardType={cardType}
                     setCardType={setCardType}
+                />
 
+                <CardGender 
+                    cardGender={cardGender}
+                    setCardGender={setCardGender}
+                />
+
+                <CardRole 
+                    cardRole={cardRole}
+                    setCardRole={setCardRole}
                 />
 
 
