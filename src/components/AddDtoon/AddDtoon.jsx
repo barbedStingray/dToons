@@ -83,11 +83,13 @@ function AddDtoon(props) {
 
                 <CardNameInput
                     cardName={cardName}
-                    setCardName={setCardName} />
+                    setCardName={setCardName} 
+                />
 
                 <CardChar
                     characterName={characterName}
-                    setCharacterName={setCharacterName} />
+                    setCharacterName={setCharacterName} 
+                />
 
                 <CardColor
                     color={color}

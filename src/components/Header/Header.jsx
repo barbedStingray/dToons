@@ -13,10 +13,14 @@ function Header() {
     }
 
     // Go Back to dtoon list
-    const goBack = () => {
+    const returnToHomePage = () => {
         console.log(`go back to dtoons`);
-
         history.push('/');
+    }
+
+    const viewdToonList = () => {
+        console.log(`go back to dtoons`);
+        history.push('/dToonList');
     }
 
 
@@ -24,7 +28,8 @@ function Header() {
         <div id="header-div">
             <h1>Welcome to dToons!</h1>
             <button onClick={addNewDtoon} >Add dToon</button>
-            <button onClick={goBack} >Go Back</button>
+            <button onClick={returnToHomePage} >Home Page</button>
+            <button onClick={viewdToonList} >View Cards</button>
 
         </div>
     )

@@ -12,6 +12,7 @@ import DtoonDisplay from '../DtoonDisplay/DtoonMap.jsx';
 import DtoonDesc from '../DtoonDesc/DtoonDesc.jsx';
 import Footer from '../Footer/Footer.jsx';
 import AddDtoon from '../AddDtoon/AddDtoon.jsx';
+import HomePage from '../HomePage/HomePage.jsx';
 
 
 // css
@@ -54,6 +55,10 @@ function App() {
         <Header />
 
         <Route exact path='/'>
+          <HomePage />
+        </Route>
+        
+        <Route exact path='/dToonList'>
           <DtoonDisplay
             dtoonList={dtoonList}
             getDtoonList={getDtoonList}
