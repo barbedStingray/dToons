@@ -6,12 +6,12 @@ function CardNameInput(props) {
     return (
         <div id="input-div">
             <label><input
-                    value={props.cardName}
-                    onChange={(e) => props.setCardName(e.target.value)}
+                    value={props.newDtoonCard.cardname}
+                    onChange={props.handleChange('cardname')}
                     type="text"
                     placeholder="card name">
                 </input></label>
-                {props.cardName}
+                {props.newDtoonCard.cardname}
         </div>
     )
 }

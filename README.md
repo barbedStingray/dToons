@@ -39,21 +39,36 @@
     [ ] ROUTE: Create dToon page
         [ ] New dToon Form
             [ ] Complete input fields
-                [ ] CardName
-                [ ] CardChar
-                [ ] CardImage
-                [ ] CardColor
-                [ ] CardNumber
-                [ ] AbilityOne
-                [ ] AbilityTwo
-                [ ] CardType
-                [ ] CardKind
-                [ ] CardGender
-                [ ] CardRole
-                [ ] CardGroup
-                [ ] CardMovie
-                [ ] CardCost
-                [ ] Submit button
+                [] CardName
+                    [x] data binding
+                [] CardChar
+                    [x] data binding
+                [] CardImage
+                    [x] data binding
+                [] CardColor
+                    [x] data binding
+                [] CardNumber
+                    [x] data binding
+                [] AbilityOne
+                    [x] data binding
+                [] AbilityTwo
+                    [x] data binding
+                [] CardType
+                    [x] data binding
+                [] CardKind
+                    [ ] data binding
+                [] CardGender
+                    [x] data binding
+                [] CardRole
+                    [x] data binding
+                [] CardGroup
+                    [ ] data binding
+                [] CardMovie
+                    [ ] data binding
+                [] CardCost
+                    [ ] data binding
+                [] Submit button
+
 
 
 

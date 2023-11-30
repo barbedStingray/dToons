@@ -9,9 +9,10 @@ function CardGender(props) {
 
             <p>Select Gender</p>
 
+
             <label htmlFor="male"><input 
                 value="male"
-                onChange={(e) => props.setCardGender(e.target.value)}
+                onChange={props.handleChange('gender')}
                 type="radio" 
                 id="male" 
                 name="gender">
@@ -21,7 +22,7 @@ function CardGender(props) {
 
             <label htmlFor="female"><input 
                 value="female"
-                onChange={(e) => props.setCardGender(e.target.value)}
+                onChange={props.handleChange('gender')}
                 type="radio" 
                 id="female" 
                 name="gender">
@@ -31,7 +32,7 @@ function CardGender(props) {
 
             <label htmlFor="neutral"><input 
                 value="neutral"
-                onChange={(e) => props.setCardGender(e.target.value)}
+                onChange={props.handleChange('gender')}
                 type="radio" 
                 id="neutral" 
                 name="gender">
@@ -40,7 +41,7 @@ function CardGender(props) {
             <br />
 
 
-            {props.cardGender}
+            {props.newDtoonCard.gender}
         </div>
     )
 }

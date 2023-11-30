@@ -5,12 +5,12 @@ function CardColor(props) {
     return (
         <div id="card-color">
             <input
-                value={props.color}
-                onChange={(e) => props.setColor(e.target.value)}
+                value={props.newDtoonCard.color}
+                onChange={props.handleChange('color')}
                 type="text"
                 placeholder="color">
             </input>
-            {props.color}
+            {props.newDtoonCard.color}
 
         </div>
     )

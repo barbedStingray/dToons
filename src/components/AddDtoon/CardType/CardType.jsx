@@ -4,8 +4,8 @@ function CardType(props) {
     return (
         <div id="card-type">
             <select
-                value={props.cardType}
-                onChange={(e) => props.setCardType(e.target.value)}
+                value={props.newDtoonCard.type}
+                onChange={props.handleChange('type')}
                 name="cardType"
                 type="text"
                 placeholder="card Type Here...">
@@ -16,7 +16,7 @@ function CardType(props) {
                     <option value="object">Object</option>
                     <option value="place">Place</option>
             </select>
-            {props.cardType}
+            {props.newDtoonCard.type}
         </div>
     )
 }

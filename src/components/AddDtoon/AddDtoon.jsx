@@ -25,17 +25,42 @@ import './AddDtoon.css';
 function AddDtoon(props) {
 
     const history = useHistory();
-    const [cardName, setCardName] = useState('');
-    const [characterName, setCharacterName] = useState('');
-    const [color, setColor] = useState('');
-    const [number, setNumber] = useState('');
-    const [cardImage, setCardImage] = useState('');
-    const [abilityOne, setAbilityOne] = useState('');
-    const [abilityTwo, setAbilityTwo] = useState('');
-    const [cardType, setCardType] = useState('');
-    const [cardKind, setCardKind] = useState('');
-    const [cardGender, setCardGender] = useState('');
-    const [cardRole, setCardRole] = useState('');
+
+    // dtoon CARD object
+    const [newDtoonCard, setNewDtoonCard] = useState({
+        cardname: '',
+        character: '',
+        color: '',
+        number: '',
+        image: '',
+        abilityone: '',
+        abilitytwo: '',
+        type: '',
+        kind: '',
+        gender: '',
+        role: ''
+    });
+
+    console.log('new dToon Object:', newDtoonCard);
+
+
+    const handleChange = (key) => (event) => {
+        console.log('eventChange happened');
+        setNewDtoonCard({ ...newDtoonCard, [key]: event.target.value });
+    }
+
+    // all variables of current card
+    // const [cardName, setCardName] = useState('');
+    // const [characterName, setCharacterName] = useState('');
+    // const [color, setColor] = useState('');
+    // const [number, setNumber] = useState('');
+    // const [cardImage, setCardImage] = useState('');
+    // const [abilityOne, setAbilityOne] = useState('');
+    // const [abilityTwo, setAbilityTwo] = useState('');
+    // const [cardType, setCardType] = useState('');
+    // const [cardKind, setCardKind] = useState('');
+    // const [cardGender, setCardGender] = useState('');
+    // const [cardRole, setCardRole] = useState('');
 
 
 
@@ -45,7 +70,7 @@ function AddDtoon(props) {
         console.log(`creating your dToon...`);
 
         axios.post('/dtoons', {
-            cardname: cardName,
+            // cardname: cardName,
             character: characterName,
             color: color,
             number: number,
@@ -82,60 +107,58 @@ function AddDtoon(props) {
             <form onSubmit={sendNewDtoon}>
 
                 <CardNameInput
-                    cardName={cardName}
-                    setCardName={setCardName} 
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
                 <CardChar
-                    characterName={characterName}
-                    setCharacterName={setCharacterName} 
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
                 <CardColor
-                    color={color}
-                    setColor={setColor}
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
                 <CardNumber
-                    number={number}
-                    setNumber={setNumber}
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
-                <CardImage 
-                    cardImage={cardImage}
-                    setCardImage={setCardImage}
+                <CardImage
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
-                <AbilityOne 
-                    abilityOne={abilityOne}
-                    setAbilityOne={setAbilityOne}
+                <AbilityOne
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
                 <AbilityTwo
-                    abilityTwo={abilityTwo}
-                    setAbilityTwo={setAbilityTwo}
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
-                <CardType 
-                    cardType={cardType}
-                    setCardType={setCardType}
+                <CardType
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange}
                 />
 
                 <CardKind
-                    cardKind={cardKind}
-                    setCardKind={setCardKind}
-                    cardType={cardType}
-                    setCardType={setCardType}
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
-                <CardGender 
-                    cardGender={cardGender}
-                    setCardGender={setCardGender}
+                <CardGender
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
-                <CardRole 
-                    cardRole={cardRole}
-                    setCardRole={setCardRole}
+                <CardRole
+                    newDtoonCard={newDtoonCard}
+                    handleChange={handleChange} 
                 />
 
 

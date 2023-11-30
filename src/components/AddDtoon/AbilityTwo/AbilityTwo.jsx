@@ -4,12 +4,12 @@ function AbilityTwo(props) {
     return (
         <div id="abilityTwo-div">
             <textarea
-                value={props.abilityTwo}
-                onChange={(e) => props.setAbilityTwo(e.target.value)}
+                value={props.newDtoonCard.abilitytwo}
+                onChange={props.handleChange('abilitytwo')}
                 type="text"
                 placeholder="Ability Two Here...">
             </textarea>
-            {props.abilityTwo}
+            {props.newDtoonCard.abilitytwo}
         </div>
     )
 }

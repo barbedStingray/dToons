@@ -5,12 +5,12 @@ function CardNumber(props) {
     return (
         <div id="card-number">
             <input
-                value={props.number}
-                onChange={(e) => props.setNumber(e.target.value)}
+                value={props.newDtoonCard.number}
+                onChange={props.handleChange('number')}
                 type="number"
                 placeholder="number">
             </input>
-            {props.number}
+            {props.newDtoonCard.number}
 
         </div>
     )

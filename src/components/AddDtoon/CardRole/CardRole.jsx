@@ -9,7 +9,7 @@ function CardRole(props) {
 
             <label htmlFor="hero"><input 
                 value="hero"
-                onChange={(e) => props.setCardRole(e.target.value)}
+                onChange={props.handleChange('role')}
                 type="radio" 
                 id="hero" 
                 name="role">
@@ -19,7 +19,7 @@ function CardRole(props) {
 
             <label htmlFor="villain"><input 
                 value="villain"
-                onChange={(e) => props.setCardRole(e.target.value)}
+                onChange={props.handleChange('role')}
                 type="radio" 
                 id="villain" 
                 name="role">
@@ -29,7 +29,7 @@ function CardRole(props) {
 
             <label htmlFor="sidekick"><input 
                 value="sidekick"
-                onChange={(e) => props.setCardRole(e.target.value)}
+                onChange={props.handleChange('role')}
                 type="radio" 
                 id="sidekick" 
                 name="role">
@@ -39,7 +39,7 @@ function CardRole(props) {
 
             <label htmlFor="minion"><input 
                 value="minion"
-                onChange={(e) => props.setCardRole(e.target.value)}
+                onChange={props.handleChange('role')}
                 type="radio" 
                 id="minion" 
                 name="role">
@@ -48,7 +48,7 @@ function CardRole(props) {
             <br />
 
 
-            {props.cardRole}
+            {props.newDtoonCard.role}
 
         </div>
     )

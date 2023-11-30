@@ -4,13 +4,13 @@ function CardImage(props) {
 
     return (
         <div id="cardImage-input">
-            <input
-                value={props.cardImage}
-                onChange={(e) => props.setCardImage(e.target.value)}
+            <input            
+                value={props.newDtoonCard.image}
+                onChange={props.handleChange('image')}
                 type="text"
                 placeholder="cardPics/Movie/picture.png">
             </input>
-            {props.cardImage}
+            {props.newDtoonCard.image}
         </div>
     )
 }
