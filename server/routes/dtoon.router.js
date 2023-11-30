@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-// GET
+// GET /dtoons
 
 router.get('/', (req, res) => {
     console.log(`match found /dtoons GET`);
@@ -17,6 +17,21 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+// GET /dtoons/admindetails/:id
+    router.get('/admindetails/:id', (req, res) => {
+        console.log(`match found /dtoons/admindetails GET`);
+
+        let queryText = `SELECT * FROM "dtoons" WHERE "id" = $1;`;
+        pool.query(queryText, [req.params.id])
+            .then((result) => {
+                console.log(`success`);
+                res.send(result.rows);
+            }).catch((error) => {
+                console.log(`error GET in server /dtoons/admindetails`, error);
+                res.sendStatus(500);
+            });
+    });
 
 
 

@@ -1,3 +1,7 @@
+
+// ***************** IMPORTS ********************** //
+
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -7,24 +11,159 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
 
+// saga Step 1 - imports
+import createSagaMiddleware from 'redux-saga';
+import { takeEvery, takeLatest, put } from 'redux-saga/effects';
+import axios from 'axios';
 
 
-// dtoon Description Reducer
-const dtoonDescription = (state = 'Testing...', action) => {
-    if(action.type === 'SHOW_CARD') {
-        return action.payload;
+// ***************** IMPORTS ********************** //
+
+
+
+
+
+
+
+
+
+
+
+// ***************** REDUCERS ********************** //
+
+// SET_ADMIN_CARDS
+const adminCards = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_ADMIN_CARDS':
+            return action.payload;
+        default:
+            return state;
     }
-    return state;
+}
+
+
+// Admin Card Details
+const adminCardDetails = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_ADMIN_CARD_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+// ***************** REDUCERS ********************** //
+
+
+
+
+
+
+
+
+
+
+
+// ***************** SAGAS ********************** //
+
+// GET for Admin Card List
+function* fetchAdminCardList() {
+    try {
+        const response = yield axios.get('/dtoons');
+        const action = { type: 'SET_ADMIN_CARDS', payload: response.data }
+        yield put(action);
+
+    } catch (error) {
+        console.log(`error GET /dtoons fetching admin card list`, error);
+        alert(`error GET /??? fetching admin card list`);
+    }
+}
+
+function* returnAdminCardDetails(action) {
+    try {
+        const response = yield axios.get(`/dtoons/admindetails/${action.payload}`);
+        yield put({ type: 'SET_ADMIN_CARD_DETAILS', payload: response.data })
+    } catch (error) {
+        console.log(`error in returning admin details`, error);
+        alert(`error in returning admin details`);
+    }
+}
+
+// POST for admin New Dtoon
+function* adminPostDtoon(action) {
+    try {
+        yield axios.post('/dtoons', action.payload);
+        yield put({ type: 'FETCH_ADMIN_CARDS' });
+
+    } catch (error) {
+        console.log(`error in admin POST /dtoons`, error);
+        alert(`error in admin POST /dtoons`);
+    }
+}
+
+// DELETE for Admin Card List
+function* adminDeleteDtoon(action) {
+    try {
+        yield axios.delete(`/dtoons/${action.payload}`);
+        yield put({ type: 'FETCH_ADMIN_CARDS'});
+
+    } catch (error) {
+        console.log(`error admin DELETE dtoon`, error);
+        alert(`error admin DELETE dtoon`);
+    }
 }
 
 
 
+// ***************** SAGAS ********************** //
+
+
+
+
+
+
+
+
+// ***************** ROOT SAGA & STORE ********************** //
+
+
+function* rootSaga() {
+    // all sagas here
+    yield takeLatest('FETCH_ADMIN_CARDS', fetchAdminCardList);
+    yield takeLatest('ADMIN_DELETE_DTOON', adminDeleteDtoon);
+    yield takeLatest('ADMIN_POST_DTOON', adminPostDtoon);
+    yield takeLatest('ADMIN_CARD_DETAILS', returnAdminCardDetails);
+
+}
+
+const sagaMiddleware = createSagaMiddleware();
+
+
 const reduxStore = createStore(
     combineReducers({
-        dtoonDescription
+        adminCards,
+        adminCardDetails
     }),
-    applyMiddleware(logger)
+    applyMiddleware(sagaMiddleware, logger)
 );
+
+sagaMiddleware.run(rootSaga);
+
+
+// ***************** ROOT SAGA & STORE ********************** //
+
+
+
+
+
+
+
+
+
+
+
+
+// ***************** APP ********************** //
 
 
 

@@ -1,15 +1,13 @@
 
 // middleware
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Route } from 'react-router-dom';
 import { HashRouter as Router, Link } from 'react-router-dom';
 
 
 // components
 import Header from '../Header/Header.jsx';
-import DtoonDisplay from '../DtoonDisplay/DtoonMap.jsx';
-import DtoonDesc from '../DtoonDesc/DtoonDesc.jsx';
+import AdminCardMap from '../AdminCardMap/AdminCardMap.jsx';
+import AdminCardDetails from '../AdminCardDetails/AdminCardDetails.jsx';
 import Footer from '../Footer/Footer.jsx';
 import AddDtoon from '../AddDtoon/AddDtoon.jsx';
 import HomePage from '../HomePage/HomePage.jsx';
@@ -21,65 +19,19 @@ import './App.css';
 
 function App() {
 
-  // variables
-  const [dtoonList, setDtoonList] = useState([]);
-
-  // GET /dtoons
-
-  const getDtoonList = () => {
-
-    axios.get('/dtoons').then((response) => {
-      console.log(`match GET /dtoons`, response.data);
-
-      setDtoonList(response.data);
-
-    }).catch((error) => {
-      console.log(`error GET /dtoons`);
-      alert(`error GET /dtoons`);
-    });
-  }
-
-
-  // function call
-  useEffect(() => {
-    getDtoonList();
-  }, []);
-
-
-
 
   return (
     <div id="web-page">
       <Router>
 
         <Header />
-
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        
-        <Route exact path='/dToonList'>
-          <DtoonDisplay
-            dtoonList={dtoonList}
-            getDtoonList={getDtoonList}
-          />
-        </Route>
-
-        <Route exact path='/dtoonDescription'>
-          <DtoonDesc />
-        </Route>
-
-        <Route exact path='/admin'>
-          <AddDtoon 
-            getDtoonList={getDtoonList}
-          />
-        </Route>
-
-
+        <Route exact path='/'> <HomePage /> </Route>
+        <Route exact path='/dToonList'> <AdminCardMap /> </Route>
+        <Route exact path='/admin'> <AddDtoon /> </Route>
+        <Route exact path='/dtoonDescription'> <AdminCardDetails /> </Route>
         <Footer />
 
       </Router>
-
     </div>
 
   );
