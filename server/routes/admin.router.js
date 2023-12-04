@@ -35,6 +35,21 @@ router.get('/dtoons', (req, res) => {
             });
     });
 
+// GET /admin/type_kind
+    router.get('/type_kind', (req, res) => {
+        console.log(`match found /type_kind`);
+
+        const queryText = `SELECT * FROM "type_kind";`
+
+        pool.query(queryText).then((result) => {
+            console.log(`sending success!`);
+            res.send(result.rows)
+        }).catch((error) => {
+            console.log(`error in /type_kind`, error);
+            res.sendStatus(500);
+        });
+    });
+
 
 
 

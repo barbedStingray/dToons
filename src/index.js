@@ -52,6 +52,16 @@ const adminCardDetails = (state = [], action) => {
     }
 }
 
+// GET set type_kind table
+const setTypeKindTable = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_TYPE_KIND_TABLE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // ***************** REDUCERS ********************** //
 
 
@@ -90,6 +100,26 @@ function* returnAdminCardDetails(action) {
     }
 }
 
+// GET type_kind table for addDtoons form
+function* getTypeKindTable() {
+    try {
+        const response = yield axios.get('/admin/type_kind');
+        const action = { type: 'SET_TYPE_KIND_TABLE', payload: response.data }
+        yield put(action);
+
+    } catch (error) {
+        console.log(`error GET type kind table`);
+        alert(`unable to get type_kind table`);
+    }
+}
+
+
+
+
+
+
+
+
 // POST admin New Dtoon /admin
 function* adminPostDtoon(action) {
     try {
@@ -101,6 +131,13 @@ function* adminPostDtoon(action) {
         alert(`error in admin POST /dtoons`);
     }
 }
+
+
+
+
+
+
+
 
 // DELETE Admin Card List /admin/:id
 function* adminDeleteDtoon(action) {
@@ -134,6 +171,7 @@ function* rootSaga() {
     yield takeLatest('ADMIN_DELETE_DTOON', adminDeleteDtoon);
     yield takeLatest('ADMIN_POST_DTOON', adminPostDtoon);
     yield takeLatest('ADMIN_CARD_DETAILS', returnAdminCardDetails);
+    yield takeLatest('GET_TYPE_KIND_TABLE', getTypeKindTable);
 
 }
 
@@ -143,6 +181,7 @@ const sagaMiddleware = createSagaMiddleware();
 const reduxStore = createStore(
     combineReducers({
         adminCards,
+        setTypeKindTable,
         adminCardDetails
     }),
     applyMiddleware(sagaMiddleware, logger)

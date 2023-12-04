@@ -26,7 +26,11 @@ function AdminCardDetails() {
                     <p>Abilityone: {dtoon.abilityone}</p>
                     <p>Abilitytwo: {dtoon.abilitytwo}</p>
                     <p>card Type: {dtoon.type}</p>
-                    <p>card Kind: {dtoon.kind}</p>
+
+                    {/* {dtoon.kind.map((item) =>
+                    <p>{item}</p>)} */}
+                    <p>card Kind: {dtoon.kind[0]}</p>
+
                     <p>card Gender: {dtoon.gender}</p>
                     <p>card role: {dtoon.role}</p>
                     <p>card movie: {dtoon.movie}</p>

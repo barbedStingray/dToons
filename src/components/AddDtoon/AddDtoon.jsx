@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -26,6 +26,20 @@ function AddDtoon() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+
+    // GET for type_kind table to populate form
+    const getTypeKindTable = () => {
+        dispatch({ type: 'GET_TYPE_KIND_TABLE' });
+    }
+
+    useEffect(() => {
+        getTypeKindTable();
+    }, []);
+
+
+
+
+
     // dtoon CARD object
     const [newDtoonCard, setNewDtoonCard] = useState({
         cardname: '',
@@ -36,7 +50,7 @@ function AddDtoon() {
         abilityone: '',
         abilitytwo: '',
         type: '',
-        kind: '',
+        kind: [],
         gender: '',
         role: '',
         moive: '',
@@ -73,7 +87,7 @@ function AddDtoon() {
                 <AbilityOne newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <AbilityTwo newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardType newDtoonCard={newDtoonCard} handleChange={handleChange} />
-                <CardKind newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                <CardKind newDtoonCard={newDtoonCard} setNewDtoonCard={setNewDtoonCard} handleChange={handleChange} />
                 <CardGender newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardRole newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardMovie newDtoonCard={newDtoonCard} handleChange={handleChange} />
