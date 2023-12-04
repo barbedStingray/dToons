@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-// GET /dtoons
+// * /admin router * 
 
-router.get('/', (req, res) => {
+// GET /admin/dtoons
+
+router.get('/dtoons', (req, res) => {
     console.log(`match found /dtoons GET`);
 
     let queryText = `SELECT * FROM "dtoons";`;
@@ -13,14 +15,14 @@ router.get('/', (req, res) => {
         console.log(`GET /dtoons success`);
         res.send(result.rows);
     }).catch((error) => {
-        console.log(`error GET /dtoons`);
+        console.log(`error GET /dtoons`, error);
         res.sendStatus(500);
     });
 });
 
-// GET /dtoons/admindetails/:id
-    router.get('/admindetails/:id', (req, res) => {
-        console.log(`match found /dtoons/admindetails GET`);
+// GET /admin/admindetails/:id
+    router.get('/dtoonDetails/:id', (req, res) => {
+        console.log(`match found /admin/dtoonDetails/:id GET`);
 
         let queryText = `SELECT * FROM "dtoons" WHERE "id" = $1;`;
         pool.query(queryText, [req.params.id])
@@ -45,8 +47,14 @@ router.post('/', (req, res) => {
     console.log(`/dtoons add new character`, req.body);
 
     let queryText = `
-    INSERT INTO "dtoons" ("cardname", "character", "color", "number", "image", "abilityone", "abilitytwo", "type", "kind", "gender", "role")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+    INSERT INTO "dtoons" (
+        "cardname", "character", "color", 
+        "number", "image", "abilityone", 
+        "abilitytwo", "type", "kind", 
+        "gender", "role", "movie",
+        "cost"
+        )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);
     `;
 
     pool.query(queryText, [
@@ -60,7 +68,9 @@ router.post('/', (req, res) => {
             req.body.type,
             req.body.kind,
             req.body.gender,
-            req.body.role
+            req.body.role,
+            req.body.movie,
+            req.body.cost
 
         ]).then((result) => {
             console.log(`/dtoons POST success`);

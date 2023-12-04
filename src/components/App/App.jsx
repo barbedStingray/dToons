@@ -26,9 +26,9 @@ function App() {
 
         <Header />
         <Route exact path='/'> <HomePage /> </Route>
-        <Route exact path='/dToonList'> <AdminCardMap /> </Route>
-        <Route exact path='/admin'> <AddDtoon /> </Route>
-        <Route exact path='/dtoonDescription'> <AdminCardDetails /> </Route>
+        <Route exact path='/admindToons'> <AdminCardMap /> </Route>
+        <Route exact path='/adminCreate'> <AddDtoon /> </Route>
+        <Route exact path='/admindToonDetails'> <AdminCardDetails /> </Route>
         <Footer />
 
       </Router>

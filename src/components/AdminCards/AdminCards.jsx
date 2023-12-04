@@ -27,7 +27,7 @@ function AdminCards(props) {
 
             <Link 
                 onClick={adminDisplayCardDetails}
-                to={'/dtoonDescription'}
+                to={'/admindToonDetails'}
             >
                 <img 
                     className={props.dtoon.color} 

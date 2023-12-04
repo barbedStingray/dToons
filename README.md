@@ -14,7 +14,7 @@
         [ ] card and gameplay notes
     [ ] ROUTE: dToon Selection Page
         [ ] display list (full?) of dToons
-            [ ] GET request - server
+            [x] GET request - server
             [ ] Card Editor (PUT requests for individual cards)
                 [ ] CardName
                 [ ] CardChar
@@ -75,7 +75,8 @@
     -- User Route
     [ ] Home Page
     [ ] dToon Store
-    [ ] 
+    [ ] deck building page
+    [ ] game page
 
 
 ## Description

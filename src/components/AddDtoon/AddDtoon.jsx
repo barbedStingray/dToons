@@ -14,7 +14,8 @@ import CardType from './CardType/CardType';
 import CardKind from './CardKind/CardKind';
 import CardGender from './CardGender/CardGender';
 import CardRole from './CardRole/CardRole.jsx';
-
+import CardMovie from './CardMovie/CardMovie.jsx';
+import CardCost from './CardCost/CardCost.jsx';
 
 import './AddDtoon.css';
 
@@ -37,7 +38,9 @@ function AddDtoon() {
         type: '',
         kind: '',
         gender: '',
-        role: ''
+        role: '',
+        moive: '',
+        cost: ''
     });
 
     console.log('new dToon Object:', newDtoonCard);
@@ -53,7 +56,6 @@ function AddDtoon() {
     const createNewDtoon = (e) => {
         e.preventDefault();
         console.log(`creating your dToon...`);
-
         dispatch({ type: 'ADMIN_POST_DTOON', payload: newDtoonCard });
     }
 
@@ -74,6 +76,8 @@ function AddDtoon() {
                 <CardKind newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardGender newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardRole newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                <CardMovie newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                <CardCost newDtoonCard={newDtoonCard} handleChange={handleChange} />
 
                 <button>Create dToon</button>
             </form>

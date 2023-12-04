@@ -9,18 +9,18 @@ function Header() {
 
     const addNewDtoon = () => {
         console.log(`going to add new dtoon page`);
-        history.push('/admin');
+        history.push('/adminCreate');
     }
 
     // Go Back to dtoon list
     const returnToHomePage = () => {
-        console.log(`go back to dtoons`);
+        console.log(`go back to home`);
         history.push('/');
     }
 
     const viewdToonList = () => {
         console.log(`go back to dtoons`);
-        history.push('/dToonList');
+        history.push('/admindToons');
     }
 
 

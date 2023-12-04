@@ -11,6 +11,7 @@ function AdminCardMap() {
     let adminCards = useSelector(store => store.adminCards);
     console.log(`adminCards:`, adminCards);
 
+    // GET /admin/dtoons
     const fetchAdminCards = () => {
         console.log(`fetching the Admin Cards`);
         let action = { type: 'FETCH_ADMIN_CARDS' }

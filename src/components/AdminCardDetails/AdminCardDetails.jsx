@@ -8,26 +8,31 @@ function AdminCardDetails() {
 
     return (
         <div id="character-cardDetails">
-            <p>Toon ID: {cardDetails[0].id}</p>
-            <p>Card Name: {cardDetails.cardname}</p>
-            <p>Character: {cardDetails.character}</p>
-            <p>ImagePath: {cardDetails.image}</p>
+            {cardDetails.map((dtoon) =>
+                <>
+                    <p>Toon ID: {dtoon.id}</p>
+                    <p>Card Name: {dtoon.cardname}</p>
+                    <p>Character: {dtoon.character}</p>
+                    <p>ImagePath: {dtoon.image}</p>
 
-            <img 
-                    className={cardDetails.color} 
-                    id="card-img" alt={cardDetails.character} 
-                    src={cardDetails.image} 
-                />
+                    <img
+                        className={dtoon.color}
+                        id="card-img" alt={dtoon.character}
+                        src={dtoon.image}
+                    />
 
-            <p>Color: {cardDetails.color}</p>
-            <p>Number: {cardDetails.number}</p>
-            <p>Abilityone: {cardDetails.abilityone}</p>
-            <p>Abilitytwo: {cardDetails.abilitytwo}</p>
-            <p>card Type: {cardDetails.type}</p>
-            <p>card Kind: {cardDetails.kind}</p>
-            <p>card Gender: {cardDetails.gender}</p>
-            <p>card Gender: {cardDetails.role}</p>
-
+                    <p>Color: {dtoon.color}</p>
+                    <p>Number: {dtoon.number}</p>
+                    <p>Abilityone: {dtoon.abilityone}</p>
+                    <p>Abilitytwo: {dtoon.abilitytwo}</p>
+                    <p>card Type: {dtoon.type}</p>
+                    <p>card Kind: {dtoon.kind}</p>
+                    <p>card Gender: {dtoon.gender}</p>
+                    <p>card role: {dtoon.role}</p>
+                    <p>card movie: {dtoon.movie}</p>
+                    <p>card cost: {dtoon.cost}</p>
+                </>
+            )}
         </div>
     )
 }

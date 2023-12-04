@@ -43,7 +43,7 @@ const adminCards = (state = [], action) => {
 
 
 // Admin Card Details
-const adminCardDetails = (state = {}, action) => {
+const adminCardDetails = (state = [], action) => {
     switch (action.type) {
         case 'SET_ADMIN_CARD_DETAILS':
             return action.payload;
@@ -66,10 +66,10 @@ const adminCardDetails = (state = {}, action) => {
 
 // ***************** SAGAS ********************** //
 
-// GET for Admin Card List
+// GET for Admin Card List /admin/dtoons
 function* fetchAdminCardList() {
     try {
-        const response = yield axios.get('/dtoons');
+        const response = yield axios.get('/admin/dtoons');
         const action = { type: 'SET_ADMIN_CARDS', payload: response.data }
         yield put(action);
 
@@ -79,9 +79,10 @@ function* fetchAdminCardList() {
     }
 }
 
+// GET admin card details /admin/dtoonDetails/:id
 function* returnAdminCardDetails(action) {
     try {
-        const response = yield axios.get(`/dtoons/admindetails/${action.payload}`);
+        const response = yield axios.get(`/admin/dtoonDetails/${action.payload}`);
         yield put({ type: 'SET_ADMIN_CARD_DETAILS', payload: response.data })
     } catch (error) {
         console.log(`error in returning admin details`, error);
@@ -89,10 +90,10 @@ function* returnAdminCardDetails(action) {
     }
 }
 
-// POST for admin New Dtoon
+// POST admin New Dtoon /admin
 function* adminPostDtoon(action) {
     try {
-        yield axios.post('/dtoons', action.payload);
+        yield axios.post('/admin', action.payload);
         yield put({ type: 'FETCH_ADMIN_CARDS' });
 
     } catch (error) {
@@ -101,10 +102,10 @@ function* adminPostDtoon(action) {
     }
 }
 
-// DELETE for Admin Card List
+// DELETE Admin Card List /admin/:id
 function* adminDeleteDtoon(action) {
     try {
-        yield axios.delete(`/dtoons/${action.payload}`);
+        yield axios.delete(`/admin/${action.payload}`);
         yield put({ type: 'FETCH_ADMIN_CARDS'});
 
     } catch (error) {
