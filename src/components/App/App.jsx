@@ -1,16 +1,16 @@
 
 // middleware
-import { Route } from 'react-router-dom';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 
 // components
-import Header from '../Header/Header.jsx';
+import AdminHeader from '../AdminHeader/AdminHeader.jsx';
 import AdminCardMap from '../AdminCardMap/AdminCardMap.jsx';
 import AdminCardDetails from '../AdminCardDetails/AdminCardDetails.jsx';
-import Footer from '../Footer/Footer.jsx';
+import AdminFooter from '../AdminFooter/AdminFooter.jsx';
 import AddDtoon from '../AddDtoon/AddDtoon.jsx';
 import HomePage from '../HomePage/HomePage.jsx';
+import LogInPage from '../LogInPage/LogInPage.jsx';
 
 
 // css
@@ -24,12 +24,17 @@ function App() {
     <div id="web-page">
       <Router>
 
-        <Header />
-        <Route exact path='/'> <HomePage /> </Route>
-        <Route exact path='/admindToons'> <AdminCardMap /> </Route>
-        <Route exact path='/adminCreate'> <AddDtoon /> </Route>
-        <Route exact path='/admindToonDetails'> <AdminCardDetails /> </Route>
-        <Footer />
+
+
+          <AdminHeader />
+          <Route exact path='/'> <HomePage /> </Route>
+          <Route exact path='/admindToons'> <AdminCardMap /> </Route>
+          <Route exact path='/adminCreate'> <AddDtoon /> </Route>
+          <Route exact path='/admindToonDetails'> <AdminCardDetails /> </Route>
+          <AdminFooter />
+
+          <Route exact path='/login'> <LogInPage /> </Route>
+          
 
       </Router>
     </div>

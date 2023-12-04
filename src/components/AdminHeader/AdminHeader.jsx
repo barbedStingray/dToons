@@ -3,7 +3,7 @@
 import { useHistory } from 'react-router-dom';
 
 
-function Header() {
+function AdminHeader() {
 
     const history = useHistory();
 
@@ -22,6 +22,10 @@ function Header() {
         console.log(`go back to dtoons`);
         history.push('/admindToons');
     }
+    const loginPage = () => {
+        console.log(`go to login`);
+        history.push('/login');
+    }
 
 
     return (
@@ -30,9 +34,10 @@ function Header() {
             <button onClick={addNewDtoon} >Add dToon</button>
             <button onClick={returnToHomePage} >Home Page</button>
             <button onClick={viewdToonList} >View Cards</button>
+            <button onClick={loginPage} >Log In</button>
 
         </div>
     )
 }
 
-export default Header;
+export default AdminHeader;

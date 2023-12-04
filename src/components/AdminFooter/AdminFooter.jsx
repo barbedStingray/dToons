@@ -1,7 +1,7 @@
 
 
 
-function Footer() {
+function AdminFooter() {
 
     return (
         <div id="footer-div">
@@ -10,4 +10,4 @@ function Footer() {
         </div>
     )
 }
-export default Footer;
+export default AdminFooter;
