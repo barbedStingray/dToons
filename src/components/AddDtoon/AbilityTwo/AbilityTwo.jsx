@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 
 function AbilityTwo(props) {
 
@@ -10,6 +11,7 @@ function AbilityTwo(props) {
                 placeholder="Ability Two Here...">
             </textarea>
             {props.newDtoonCard.abilitytwo}
+
         </div>
     )
 }

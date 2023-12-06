@@ -3,7 +3,7 @@
 function CardChar(props) {
 
     return (
-        <div id="input-div">
+        <div id="cardCharacter-input">
             <input
                 value={props.newDtoonCard.character}
                 onChange={props.handleChange('character')}

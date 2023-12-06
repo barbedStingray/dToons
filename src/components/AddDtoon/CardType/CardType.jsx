@@ -1,11 +1,11 @@
 
 import { useSelector } from 'react-redux';
 import React from 'react'
-import Select from 'react-select';
 
 function CardType(props) {
 
-    const typeKind = useSelector(store => store.setTypeKindTable);
+    const typesTable = useSelector(store => store.setTypesTable);
+
 
     return (
 
@@ -15,21 +15,11 @@ function CardType(props) {
                 onChange={props.handleChange('type')}
                 name="cardType"
             >
-                {typeKind.map((type) =>
-                    <option key={type.id} >{type.type}</option>
+                {typesTable.map((type) =>
+                    <option key={type.id} value={type.id}>{type.type}</option>
                 )}
             </select>
             {props.newDtoonCard.type}
-
-            {/* let options = [
-            {value: "blues", label: "Blues" },
-            {value: "rock", label: "Rock" },
-            {value: "jazz", label: "Jazz" },
-            {value: "orchestra", label: "Orchestra" },
-            ];
-
-            <Select options={options} /> */}
-
 
         </div>
     )

@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import './AdminCards.css';
+
 function AdminCards(props) {
 
     const dispatch = useDispatch();
@@ -21,25 +23,35 @@ function AdminCards(props) {
         dispatch({ type: 'ADMIN_DELETE_DTOON', payload: props.dtoon.id });
     }
 
+    // todo SEARCH FUNCTION
 
-    return(
+
+    return (
+
         <div id="dtoon-card">
 
-            <Link 
+
+            <h4>{props.dtoon.cardname}</h4>
+            {/* <p>{props.dtoon.character}</p> */}
+
+            <Link
                 onClick={adminDisplayCardDetails}
                 to={'/admindToonDetails'}
             >
-                <img 
-                    className={props.dtoon.color} 
-                    id="card-img" alt={props.dtoon.character} 
-                    src={props.dtoon.image} 
+
+                <img
+                    className={props.dtoon.color}
+                    id="card-img" alt={props.dtoon.character}
+                    src={props.dtoon.image}
                 />
             </Link>
 
             <p id="dtoon-number" className={props.dtoon.color} >{props.dtoon.number}</p>
-            <button onClick={adminDeleteDtoon} >Delete dToon</button>
+
+            <button id='admin-delete' onClick={adminDeleteDtoon} >Delete dToon</button>
 
         </div>
+
     )
 }
 

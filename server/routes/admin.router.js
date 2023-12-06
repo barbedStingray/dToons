@@ -35,17 +35,33 @@ router.get('/dtoons', (req, res) => {
             });
     });
 
-// GET /admin/type_kind
-    router.get('/type_kind', (req, res) => {
-        console.log(`match found /type_kind`);
+// GET filter by movie /admin/dtoons/:id
+    router.get('/dtoons/:id', (req, res) => {
+        console.log(`match found for filter by movie`);
 
-        const queryText = `SELECT * FROM "type_kind";`
+        let queryText = `SELECT * FROM "dtoons" WHERE "movie" = $1;`;
+
+        pool.query(queryText, [req.params.id])
+            .then((result) => {
+                console.log(`success`);
+                res.send(result.rows);
+            }).catch((error) => {
+                console.log(`error GET in server filtering for movies`);
+                res.sendStatus(500);
+            });
+    });
+
+// GET /admin/type
+    router.get('/types', (req, res) => {
+        console.log(`match found /types`);
+
+        const queryText = `SELECT * FROM "types";`
 
         pool.query(queryText).then((result) => {
             console.log(`sending success!`);
             res.send(result.rows)
         }).catch((error) => {
-            console.log(`error in /type_kind`, error);
+            console.log(`error in /types`, error);
             res.sendStatus(500);
         });
     });
@@ -65,11 +81,11 @@ router.post('/', (req, res) => {
     INSERT INTO "dtoons" (
         "cardname", "character", "color", 
         "number", "image", "abilityone", 
-        "abilitytwo", "type", "kind", 
+        "abilitytwo", "type", 
         "gender", "role", "movie",
         "cost"
         )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
     `;
 
     pool.query(queryText, [
@@ -81,7 +97,6 @@ router.post('/', (req, res) => {
             req.body.abilityone,
             req.body.abilitytwo,
             req.body.type,
-            req.body.kind,
             req.body.gender,
             req.body.role,
             req.body.movie,

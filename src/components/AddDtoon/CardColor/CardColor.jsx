@@ -1,9 +1,11 @@
 
 
+
 function CardColor(props) {
 
     return (
         <div id="card-color">
+
             <input
                 value={props.newDtoonCard.color}
                 onChange={props.handleChange('color')}

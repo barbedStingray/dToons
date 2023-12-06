@@ -2,6 +2,8 @@
 // ***************** IMPORTS ********************** //
 
 
+import { BrowserRouter } from "react-router-dom"
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -34,7 +36,7 @@ import axios from 'axios';
 // SET_ADMIN_CARDS
 const adminCards = (state = [], action) => {
     switch (action.type) {
-        case 'SET_ADMIN_CARDS':
+        case 'SET_ADMIN_CARDS': // returns all cards in database
             return action.payload;
         default:
             return state;
@@ -53,9 +55,9 @@ const adminCardDetails = (state = [], action) => {
 }
 
 // GET set type_kind table
-const setTypeKindTable = (state = [], action) => {
+const setTypesTable = (state = [], action) => {
     switch (action.type) {
-        case 'SET_TYPE_KIND_TABLE':
+        case 'SET_TYPES_TABLE':
             return action.payload;
         default:
             return state;
@@ -100,18 +102,19 @@ function* returnAdminCardDetails(action) {
     }
 }
 
-// GET type_kind table for addDtoons form
-function* getTypeKindTable() {
+// GET types table for addDtoons form
+function* getTypesTable() {
     try {
-        const response = yield axios.get('/admin/type_kind');
-        const action = { type: 'SET_TYPE_KIND_TABLE', payload: response.data }
+        const response = yield axios.get('/admin/types');
+        const action = { type: 'SET_TYPES_TABLE', payload: response.data }
         yield put(action);
 
     } catch (error) {
-        console.log(`error GET type kind table`);
-        alert(`unable to get type_kind table`);
+        console.log(`error GET types table`);
+        alert(`unable to get types table`);
     }
 }
+
 
 
 
@@ -143,7 +146,7 @@ function* adminPostDtoon(action) {
 function* adminDeleteDtoon(action) {
     try {
         yield axios.delete(`/admin/${action.payload}`);
-        yield put({ type: 'FETCH_ADMIN_CARDS'});
+        yield put({ type: 'FETCH_ADMIN_CARDS' });
 
     } catch (error) {
         console.log(`error admin DELETE dtoon`, error);
@@ -171,7 +174,7 @@ function* rootSaga() {
     yield takeLatest('ADMIN_DELETE_DTOON', adminDeleteDtoon);
     yield takeLatest('ADMIN_POST_DTOON', adminPostDtoon);
     yield takeLatest('ADMIN_CARD_DETAILS', returnAdminCardDetails);
-    yield takeLatest('GET_TYPE_KIND_TABLE', getTypeKindTable);
+    yield takeLatest('GET_TYPES_TABLE', getTypesTable);
 
 }
 
@@ -181,7 +184,7 @@ const sagaMiddleware = createSagaMiddleware();
 const reduxStore = createStore(
     combineReducers({
         adminCards,
-        setTypeKindTable,
+        setTypesTable,
         adminCardDetails
     }),
     applyMiddleware(sagaMiddleware, logger)
@@ -209,9 +212,11 @@ sagaMiddleware.run(rootSaga);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-        <Provider store={reduxStore}>
+    <Provider store={reduxStore}>
+        <BrowserRouter>
             <App />
-        </Provider>
+        </BrowserRouter>
+    </Provider>
 );
 
 

@@ -1,5 +1,5 @@
 
-function HomePage() {
+function AdminHome() {
 
     return (
         <div id="admin-home" >
@@ -7,4 +7,4 @@ function HomePage() {
         </div>
     )
 }
-export default HomePage;
+export default AdminHome;

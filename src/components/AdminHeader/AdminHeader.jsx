@@ -1,30 +1,34 @@
 
 
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function AdminHeader() {
 
-    const history = useHistory();
+    // const history = useHistory();
+    let navigate = useNavigate();
+    // console.log(`navigate:`, navigate);
 
     const addNewDtoon = () => {
         console.log(`going to add new dtoon page`);
-        history.push('/adminCreate');
+        navigate('/adminCreate');
     }
 
     // Go Back to dtoon list
     const returnToHomePage = () => {
         console.log(`go back to home`);
-        history.push('/');
+        navigate('/');
     }
 
     const viewdToonList = () => {
         console.log(`go back to dtoons`);
-        history.push('/admindToons');
+        navigate('/admindToons');
     }
     const loginPage = () => {
         console.log(`go to login`);
-        history.push('/login');
+        navigate('/login');
     }
 
 

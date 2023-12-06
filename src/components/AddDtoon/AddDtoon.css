@@ -1,7 +1,33 @@
 
 #add-dtoon {
-    display: flex;
-    flex-direction: column;
-    margin: 5% 2%;
+    border: red 2px solid;
     
+}
+
+        #text-input {
+            border: green 2px solid;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+                #cardName-input {
+                    border: gold 2px solid;
+                }
+                #cardMovie-input {
+                    border: gold 2px solid;
+                }
+                #cardCharacter-input {
+                    border: gold 2px solid;
+                }
+                #cardImage-input {
+                    border: gold 2px solid;
+                    /* width: 20%; */
+                }
+
+
+#color-button {
+    background-color: red;
+    width: 40px;
+    height: 40px;
 }

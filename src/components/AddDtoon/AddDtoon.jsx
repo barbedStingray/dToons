@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CardNameInput from './CardName/CardName.jsx';
 import CardChar from './CardChar/CardChar.jsx';
@@ -23,21 +22,25 @@ import './AddDtoon.css';
 
 function AddDtoon() {
 
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
 
 
     // GET for type_kind table to populate form
-    const getTypeKindTable = () => {
-        dispatch({ type: 'GET_TYPE_KIND_TABLE' });
+    const getTypesTable = () => {
+        dispatch({ type: 'GET_TYPES_TABLE' });
     }
-
     useEffect(() => {
-        getTypeKindTable();
+        getTypesTable();
     }, []);
 
 
-
+    // POST request /dtoons
+    const createNewDtoon = (e) => {
+        e.preventDefault();
+        console.log(`creating your dToon...`);
+        dispatch({ type: 'ADMIN_POST_DTOON', payload: newDtoonCard });
+    }
 
 
     // dtoon CARD object
@@ -50,7 +53,6 @@ function AddDtoon() {
         abilityone: '',
         abilitytwo: '',
         type: '',
-        kind: [],
         gender: '',
         role: '',
         moive: '',
@@ -59,42 +61,45 @@ function AddDtoon() {
 
     console.log('new dToon Object:', newDtoonCard);
 
-
+    // newDtoonCard key fillers
     const handleChange = (key) => (event) => {
         console.log('eventChange happened');
         setNewDtoonCard({ ...newDtoonCard, [key]: event.target.value });
     }
 
 
-    // POST request /dtoons
-    const createNewDtoon = (e) => {
-        e.preventDefault();
-        console.log(`creating your dToon...`);
-        dispatch({ type: 'ADMIN_POST_DTOON', payload: newDtoonCard });
-    }
-
-
 
     return (
         <div id="add-dtoon">
+
+            <div>
+                <h2>Create a dToon</h2>
+            </div>
+
             <form onSubmit={createNewDtoon}>
 
-                <CardNameInput newDtoonCard={newDtoonCard} handleChange={handleChange} />
-                <CardChar newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                <div id='text-input'>
+                    <CardNameInput newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                    <CardMovie newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                    <CardChar newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                    <CardImage newDtoonCard={newDtoonCard} handleChange={handleChange} />
+                </div>
+
+
                 <CardColor newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardNumber newDtoonCard={newDtoonCard} handleChange={handleChange} />
-                <CardImage newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <AbilityOne newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <AbilityTwo newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardType newDtoonCard={newDtoonCard} handleChange={handleChange} />
-                <CardKind newDtoonCard={newDtoonCard} setNewDtoonCard={setNewDtoonCard} handleChange={handleChange} />
                 <CardGender newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardRole newDtoonCard={newDtoonCard} handleChange={handleChange} />
-                <CardMovie newDtoonCard={newDtoonCard} handleChange={handleChange} />
                 <CardCost newDtoonCard={newDtoonCard} handleChange={handleChange} />
+
+                {/* <CardKind newDtoonCard={newDtoonCard} setNewDtoonCard={setNewDtoonCard} handleChange={handleChange} /> */}
 
                 <button>Create dToon</button>
             </form>
+
 
         </div>
     )

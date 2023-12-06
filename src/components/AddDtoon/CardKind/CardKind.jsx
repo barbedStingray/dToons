@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Select from 'react-select';
+
 
 function CardKind(props) {
 
@@ -9,8 +11,7 @@ function CardKind(props) {
     console.log(`typeKind:`, kindSelector);
 
     const [kindBoxes, setKindBoxes] = useState([]);
-    const [kindPostArray, setKindPostArray] = useState([]);
-
+    const [kindPostArray, setKindPostArray] = useState('');
 
 
     // setting up the function to pass the kind array...
@@ -27,16 +28,29 @@ function CardKind(props) {
             // props.setNewDtoonCard(kindPostArray)
         }
         else if (kindPostArray.indexOf(e.target.value) >= 0) {
-            setKindPostArray(kindPostArray.filter( (kps) => kps !== e.target.value));
+            setKindPostArray(kindPostArray.filter((kps) => kps !== e.target.value));
             // props.setNewDtoonCard.kind(kindPostArray);
         }
-        else { console.log(`'exception`)}
+        else { console.log(`'exception`) }
     }
 
 
+// package the object to format it for your dropdown box
 
+function packageTheObject(array) {
+    console.log(`packaging object array...`, array);
+    console.log(`arrayTYPE`, typeof(array));
 
+    let objectPackage = [];
+    console.log(`objectPackage TYPE:`, typeof(objectPackage));
 
+    for(let i = 0; i < array.length; i++) {
+        objectPackage.push({ value: `${array[i]}`, label: `${array[i]}`});
+        console.log(`objectPackage:`, objectPackage);
+    }
+    console.log(`objectPackage TYPE`, typeof(objectPackage));
+    return objectPackage;
+}
 
     // function that populates checkboxes based on Type selection
     function getKindCheckboxes() {
@@ -46,7 +60,13 @@ function CardKind(props) {
             if (props.newDtoonCard.type === kindSelector[i].type) {
                 let newKind = kindSelector[i].kind.split(',');
                 console.log(`newKind:`, newKind);
-                return setKindBoxes(newKind);
+
+                // run packaging function based on new array
+                let finalPackage = packageTheObject(newKind);
+                console.log(`finalPackage:`, finalPackage);
+                console.log(`finalPackage TYPE:`, typeof([finalPackage]));
+
+                return setKindBoxes(finalPackage);
             }
         }
     }
@@ -55,11 +75,19 @@ function CardKind(props) {
         getKindCheckboxes();
     }, [props.newDtoonCard.type]);
 
+// selecting options
+    const [selectedOption, setSelectedOptions] = useState([]);
+
+    const handleChange = (selectedOption) => {
+        setSelectedOptions(selectedOption);
+    }
+
+
 
     return (
         <div id="card-kind">
 
-            {kindBoxes.map((checkbox, i) =>
+            {/* {kindBoxes.map((checkbox, i) =>
                 <label>{checkbox}
                     <input
                         key={i}
@@ -71,7 +99,16 @@ function CardKind(props) {
                     </input>
                 </label>
 
-            )}
+            )} */}
+
+            <Select
+                options={kindBoxes}
+                // value={selectedOption}
+                // onChange={handleChange}
+                isMulti={true}
+            />
+            {selectedOption}
+
 
             <br />
 

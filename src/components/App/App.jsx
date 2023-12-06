@@ -1,16 +1,25 @@
 
 // middleware
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Routes, Link, Outlet } from 'react-router-dom';
+// "react-router": "^6.18.0",
+// "react-router-dom": "^5.2.0",
+
 
 
 // components
 import AdminHeader from '../AdminHeader/AdminHeader.jsx';
+import AdminFooter from '../AdminFooter/AdminFooter.jsx';
 import AdminCardMap from '../AdminCardMap/AdminCardMap.jsx';
 import AdminCardDetails from '../AdminCardDetails/AdminCardDetails.jsx';
-import AdminFooter from '../AdminFooter/AdminFooter.jsx';
 import AddDtoon from '../AddDtoon/AddDtoon.jsx';
-import HomePage from '../HomePage/HomePage.jsx';
+import AdminHome from '../AdminHome/AdminHome.jsx';
 import LogInPage from '../LogInPage/LogInPage.jsx';
+import UserHome from '../UserHome/UserHome.jsx';
+import YourDtoons from '../YourDtoons/YourDtoons.jsx';
+import DToonShop from '../dToonShop/dToonShop.jsx';
+import TheGame from '../TheGame/TheGame.jsx';
+import SoloCardDetails from '../SoloCardDetails/SoloCardDetails.jsx';
+
 
 
 // css
@@ -22,23 +31,44 @@ function App() {
 
   return (
     <div id="web-page">
-      <Router>
+
+    <nav>
+      <ul>
+        <li> <Link to='/'>Log In</Link> </li>
+        <li> <Link to='/user'>User Home</Link> </li>
+        <li> <Link to='/admin'>Admin Home</Link> </li>
+        <li> <Link to='/adminDtoons'>Admin dToons</Link> </li>
+        <li> <Link to='/addNewToon'>Add New dToon</Link> </li>
+        <li> <Link to='/yourDtoons'>My Collection</Link> </li>
+        <li> <Link to='/dToonShop'>View dToon Shop</Link> </li>
+        <li> <Link to='/theGame'>Play Game</Link> </li>
+      </ul>
+    </nav>
 
 
+      <Routes>
 
-          <AdminHeader />
-          <Route exact path='/'> <HomePage /> </Route>
-          <Route exact path='/admindToons'> <AdminCardMap /> </Route>
-          <Route exact path='/adminCreate'> <AddDtoon /> </Route>
-          <Route exact path='/admindToonDetails'> <AdminCardDetails /> </Route>
-          <AdminFooter />
+        <Route path={'/'} element={<LogInPage/>} />
 
-          <Route exact path='/login'> <LogInPage /> </Route>
-          
+        {/* User Routes */}
+          <Route path={'/user'} element={<UserHome/>} />
+          <Route path={'/yourDtoons'} element={<YourDtoons/>} />
+          <Route path={'/dToonShop'} element={<DToonShop/>} />
+          <Route path={'/soloCard'} element={<SoloCardDetails/>} />
+          <Route path={'/theGame'} element={<TheGame/>} />
 
-      </Router>
+
+        {/* Admin Routes */}
+        {/* <Route element={<> <AdminHeader /> <AdminFooter /> </>} > */}
+          <Route path={'/admin'} element={<AdminHome />} />
+          <Route path={'/adminDtoons'} element={<AdminCardMap />} />
+          <Route path={'/addNewToon'} element={<AddDtoon />} />
+          <Route path={'/admindToonDetails'} element={<AdminCardDetails />} />
+        {/* </Route> */}
+
+      </Routes>
+
     </div>
-
   );
 }
 
@@ -46,20 +76,4 @@ export default App;
 
 
 
-// newest version code for react-router-dom (dont forget Outlet to render)
-
-{/* <Route element={ <> <Header /> <Footer /> </> }>
-
-        <Route path={'/'} element={<DtoonDisplay  
-              dtoonList={dtoonList} 
-              getDtoonList={getDtoonList} />} />
-        <Route path={'/dtoonDescription'} element={<DtoonDesc />} />
-        <Route path={'/admin'} element ={<AddDtoon getDtoonList={getDtoonList} />} />
-
-      </Route>
-
-      {/* <Route element={ <> <AdminHeader /> <Footer /> </> }>
-        <Route path={'/admin'} element ={<AddDtoon />} />
-      </Route> */}
-{/* <Route path={'*'} element={<NotFound />} />  */ }
 

@@ -1,0 +1,84 @@
+
+#adminCard-details {
+    border: 2px solid red;
+  }
+
+        
+        #card-attributes {
+            /* border: 2px solid green; */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+                #basic-attributes {
+                    /* border: 2px solid red; */
+                    width: 50%;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                        #details-div {
+                            /* border: 2px solid yellow; */
+                            width: 70%;
+                            margin-left: 10%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-evenly;
+                        }
+
+                        #button-div {
+                            /* border: 2px solid grey; */
+                            width: 20%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-evenly;
+                        }
+                
+
+                #image-attributes {
+                    /* border: 2px solid goldenrod; */
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 5%;
+                }
+                        #edit-imagePath {
+                            /* border: burlywood 2px solid; */
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            margin-bottom: 4%;
+                        }
+
+                        #admin-photo {
+                            /* border: limegreen 2px solid; */
+                            align-self: center;
+
+                        }
+
+                        #descriptors-attributes {
+                            /* border: 2px solid silver; */
+                            width: 80%;
+                            margin: 0 10%;
+                            
+                        }
+
+                        .invisibleEdit {
+                            display: none;
+                            position: fixed;
+                            border: 5px solid lightblue;
+                          }
+                        
+                          /* css to diplay your Edit as a pop up */
+                          .visibleEdit {
+                            display: flex;
+                            flex-direction: column;
+                            /* position: fixed; */
+                            /* top: 30%;
+                            left: 35%;
+                            border: 10px solid #707A50;
+                            border-radius: 20px;
+                            width: 30%;
+                            background-color: rgb(0, 0, 0); */
+                          }
+                        

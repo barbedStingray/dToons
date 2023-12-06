@@ -2,7 +2,7 @@
 export default function CardMovie(props) {
 
     return (
-        <div id="card-movie">
+        <div id="cardMovie-input">
             <input
                 value={props.newDtoonCard.movie}
                 onChange={props.handleChange('movie')}
